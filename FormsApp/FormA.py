@@ -1,6 +1,6 @@
 import flet
-from flet import Page, Switch, theme, Text, TextField, RadioGroup, Radio, Column, Checkbox, Row, ElevatedButton, \
-    Dropdown, dropdown, ProgressBar, ButtonStyle, colors, IconButton, icons
+from flet import Page, Switch, Text, TextField, Column, Row, ElevatedButton, Dropdown, dropdown, ProgressBar, \
+    ButtonStyle, icons
 from time import sleep
 
 
@@ -19,7 +19,6 @@ def main(page: Page):
     # -------End Page Mode--------------
 
     def register_clicked(e):
-
         # -------ProgressBar Function-------------
         # page.splash = ProgressBar()
         page.splash = ProgressBar()

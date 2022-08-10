@@ -1,5 +1,6 @@
 import flet
-from flet import Page, Column, Row, Text, TextField, ElevatedButton
+from flet import Page, CircleAvatar, Stack, Column, Row, Text, TextField, ElevatedButton, alignment, colors
+from flet.container import Container
 
 
 def main(page: Page):
@@ -13,19 +14,33 @@ def main(page: Page):
     page.pubsub.subscribe(on_message)
 
     def send_click(e):
-        page.pubsub.send_all(f"{user.value}: {message.value}")
+        page.pubsub.send_all(f"{avatar}{username.value}: {message.value}")
         # clean up the form
         message.value = ""
         page.update()
 
     messages = Column()
-    user = TextField(hint_text="Your name", width=150)
+
+    # avatar with online status
+    avatar = Stack([
+        CircleAvatar(
+            background_image_url="https://afritservice.com/wp-content/uploads/2020/04/greg.jpg"
+        ),
+        Container(
+            content=CircleAvatar(bgcolor=colors.GREEN, radius=5),
+            alignment=alignment.bottom_left,
+        ),
+    ],
+        width=40,
+        height=40
+    ),
+    username = TextField(hint_text="Your name", width=150)
     message = TextField(hint_text="Your message...", expand=True) # fill all the space
     send = ElevatedButton("Send", on_click=send_click)
     page.add(messages,Row(
-        controls=[user, message, send]
+        controls=[avatar, username, message, send]
     ))
 
 
-#flet.app(target=main)
+# flet.app(target=main)
 flet.app(target=main, view=flet.WEB_BROWSER)
