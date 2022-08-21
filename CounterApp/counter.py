@@ -1,6 +1,7 @@
 import flet
 from flet import Page, TextField, Row, IconButton, icons
 
+
 def main(page: Page):
     page.title = "COUNTER APP"
     page.vertical_alignment = "center"

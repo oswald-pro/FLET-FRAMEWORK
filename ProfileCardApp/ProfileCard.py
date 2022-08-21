@@ -1,6 +1,3 @@
-import colorsys
-from cProfile import label
-
 import flet
 from flet import Page, Card, Image, Container, Switch, Text, TextField, Column, Row, ElevatedButton, Dropdown, \
     dropdown, ProgressBar, ButtonStyle, icons, Icon, ListTile, TextButton, WEB_BROWSER
@@ -111,5 +108,5 @@ def main(page: Page):
     )
 
 
-flet.app(target=main)
-#flet.app(target=main, view=WEB_BROWSER)
+#flet.app(target=main)
+flet.app(target=main, view=WEB_BROWSER)
