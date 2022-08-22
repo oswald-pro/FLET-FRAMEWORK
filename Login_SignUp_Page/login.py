@@ -66,7 +66,7 @@ def main(page: Page):
     def route_change(route):
         global login_btn
         # -------------------------Sign IN Form--------------------------------
-        text = Text(value="LOGIN PAGE", size=40, text_align="center", weight="w900", color="BLUE")
+        text = Text(value="Conn PAGE", size=40, text_align="center", weight="w900", color="BLUE")
         username = TextField(label="Username", hint_text="Your username...", width=350, text_align="center",
                              border_radius=30, prefix_icon="AVATAR")
         password = TextField(label="Password", hint_text="Enter your password", width=350, text_align="center",
@@ -118,7 +118,7 @@ def main(page: Page):
                 View(
                     "/signup",
                     [
-                        AppBar(title=Text("SIGN UP"), center_title=True, bgcolor=colors.SURFACE_VARIANT),
+                        AppBar(title=Text("Back"), bgcolor=colors.SURFACE_VARIANT),
                         Row(alignment="center", controls=[new_text]),
                         Row(alignment="center", controls=[firstname, lastname]),
                         Row(alignment="center", controls=[new_username, gender]),
@@ -130,7 +130,13 @@ def main(page: Page):
             )
         page.update()
 
+    def view_pop(view):
+        page.views.pop()
+        top_view = page.views[-1]
+        page.go(top_view.route)
+
     page.on_route_change = route_change
+    page.on_view_pop = view_pop
     page.go(page.route)
 
 
