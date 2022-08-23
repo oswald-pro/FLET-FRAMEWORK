@@ -1,31 +1,7 @@
 import flet
-from flet import Page, AppBar, TextField, Text, Row, ElevatedButton, Switch, WEB_BROWSER, Column, ProgressBar, \
-    ProgressRing, TextButton, View, colors, Dropdown, dropdown
+from flet import Page, AppBar, TextField, Text, Row, ElevatedButton, Switch, WEB_BROWSER, ProgressBar, TextButton, View,\
+    colors, Dropdown, dropdown
 from time import sleep
-
-import sqlite3
-
-conn = sqlite3.connect('connect.db')
-c = conn.cursor()
-
-
-# DB  Functions
-def create_usertable():
-    c.execute('CREATE TABLE IF NOT EXISTS logintable(username TEXT, password TEXT)')
-
-
-def add_userdata(username, password):
-    c.execute('INSERT INTO logintable(name,role,gender,username,password) VALUES (?,?)', (username, password))
-    conn.commit()
-
-
-def login_user(username, password):
-    c.execute('SELECT * FROM logintable WHERE username =? AND password = ?', (username, password))
-    data = c.fetchall()
-    return data
-
-
-status_text = Text(None)
 
 
 def main(page: Page):
